@@ -1,0 +1,224 @@
+{
+  "$comment": "Peakst8 Mattermost bootstrap manifest v2 (matrix). One team; channels prefixed by vertical or horizontal. Consumed by deploy/bootstrap.py. v1 (five flat entities) kept as channels.flat-v1.json.",
+  "team": {
+    "name": "peakst8",
+    "display_name": "Peakst8",
+    "type": "O",
+    "description": "Single team. Entity separation is by channel prefix, not by team, so that search and cross-entity visibility work."
+  },
+  "header_convention": "Owner: @{owner} | Docs: {notion_url} | {one_line_purpose}",
+  "channels": [
+    {
+      "name": "company-announcements",
+      "display_name": "Company Announcements",
+      "type": "O",
+      "purpose": "Leads post, everyone reads. Replies go in a thread, never in the channel.",
+      "header": "Owner: @{owner} | Docs: {docs} | Broadcast only. Reply in thread.",
+      "owner_role": "exec_sponsor",
+      "notion_key": "company_home"
+    },
+    {
+      "name": "decisions",
+      "display_name": "Decisions",
+      "type": "O",
+      "purpose": "Append-only decision log. One post per decision, same day, linked to its Notion page.",
+      "header": "Owner: @{owner} | Docs: {docs} | One post per decision. Do not discuss here, link the thread.",
+      "owner_role": "programme_owner",
+      "notion_key": "decisions_db"
+    },
+    {
+      "name": "weekly-digest",
+      "display_name": "Weekly Digest",
+      "type": "O",
+      "purpose": "Friday roll-up. One post per vertical and horizontal: what shipped, what is blocked, what was decided.",
+      "header": "Owner: @{owner} | Docs: {docs} | Posted by each channel owner every Friday.",
+      "owner_role": "programme_owner",
+      "notion_key": "company_home"
+    },
+    {
+      "name": "ops-escalations",
+      "display_name": "Ops Escalations",
+      "type": "O",
+      "purpose": "Anything blocking an athlete, event or client today. Same-day issues only.",
+      "header": "Owner: @{owner} | Docs: {docs} | Today-blocking issues only. Everything else goes to the vertical or horizontal channel.",
+      "owner_role": "programme_owner",
+      "notion_key": "company_home"
+    },
+    {
+      "name": "alert-systems",
+      "display_name": "System Alerts",
+      "type": "O",
+      "purpose": "Integrations, monitoring and uptime. Machine posts only, no discussion.",
+      "header": "Owner: @{owner} | Docs: {docs} | Machine output only. Discuss in #tech-eng.",
+      "owner_role": "platform_admin",
+      "notion_key": "platform_home"
+    },
+    {
+      "name": "calls",
+      "display_name": "Calls",
+      "type": "O",
+      "purpose": "Brand and customer call summaries from Bluedot. Full transcripts live in the Notion Calls database.",
+      "header": "Owner: @{owner} | Docs: {docs} | Bot posts only. Discuss in the call's project or vertical channel.",
+      "owner_role": "programme_owner",
+      "notion_key": "calls_db",
+      "internal_only": true
+    },
+    {
+      "name": "random",
+      "display_name": "Random",
+      "type": "O",
+      "purpose": "Non-work conversation. Retained deliberately.",
+      "header": "No owner. No purpose. That is the point.",
+      "owner_role": "none",
+      "notion_key": null
+    },
+    {
+      "name": "finance",
+      "display_name": "Finance",
+      "type": "P",
+      "purpose": "Restricted. Commercial terms, budgets, payouts.",
+      "header": "Owner: @{owner} | Restricted membership. Private by stated reason: commercial.",
+      "owner_role": "exec_sponsor",
+      "notion_key": null
+    },
+    {
+      "name": "people",
+      "display_name": "People",
+      "type": "P",
+      "purpose": "Restricted. Hiring, compensation, performance.",
+      "header": "Owner: @{owner} | Restricted membership. Private by stated reason: personal data.",
+      "owner_role": "exec_sponsor",
+      "notion_key": null
+    }
+  ],
+  "on_demand_conventions": {
+    "$comment": "NOT created at bootstrap. One seed example each is created so the convention is visible.",
+    "project": {
+      "pattern": "proj-{vertical_or_horizontal}-{slug}",
+      "type": "O",
+      "rule": "One per initiative. Time-boxed. Archived on close, never deleted.",
+      "seed_example": "proj-hyrox-season-launch"
+    },
+    "external": {
+      "pattern": "ext-{vertical}-{partner-slug}",
+      "type": "P",
+      "rule": "One per partner per entity. Guests only see this channel. A supplier working two entities gets two channels, never one shared.",
+      "seed_example": "ext-hyrox-venue",
+      "note": "Guests need a Professional license. The seed channel is created now; guests are invited only after the license is applied."
+    }
+  },
+  "post_create_rules": [
+    "Every channel must have a non-empty purpose and header before anyone is invited.",
+    "A channel with an empty purpose is archived at the monthly review.",
+    "Default to public. A private channel requires a stated reason in its header."
+  ],
+  "verticals": {
+    "hyrox": "Hyrox",
+    "ironman": "Ironman",
+    "passport": "Peakst8 Passport",
+    "noparking": "NoParking",
+    "festival": "Peakst8 Festival"
+  },
+  "horizontals": {
+    "tech": "Tech",
+    "sales": "Sales",
+    "community": "Community"
+  },
+  "vertical_channel_template": [
+    {
+      "suffix": "general",
+      "display_suffix": "General",
+      "type": "O",
+      "purpose": "{Name} home channel. Anything that is not ops or GTM starts here.",
+      "header": "Owner: @{owner} | Docs: {docs} | {Name} home channel."
+    },
+    {
+      "suffix": "ops",
+      "display_suffix": "Ops",
+      "type": "O",
+      "purpose": "{Name} delivery and on-ground operations. Written standup posts here.",
+      "header": "Owner: @{owner} | Docs: {docs} | Standup by 10:30: doing / blocked / needs a decision."
+    },
+    {
+      "suffix": "gtm",
+      "display_suffix": "GTM",
+      "type": "O",
+      "purpose": "{Name} sales, marketing, sponsorship and partnerships.",
+      "header": "Owner: @{owner} | Docs: {docs} | Commercials stay in #finance."
+    }
+  ],
+  "horizontal_channels": {
+    "tech": [
+      {
+        "suffix": "general",
+        "display_suffix": "General",
+        "type": "O",
+        "purpose": "Tech home channel. Requests into tech start here.",
+        "header": "Owner: @{owner} | Docs: {docs} | Requests into tech start here."
+      },
+      {
+        "suffix": "product",
+        "display_suffix": "Product",
+        "type": "O",
+        "purpose": "Roadmap, specs, release planning.",
+        "header": "Owner: @{owner} | Docs: {docs} | Roadmap and specs."
+      },
+      {
+        "suffix": "eng",
+        "display_suffix": "Engineering",
+        "type": "O",
+        "purpose": "Build, deploys, incidents, technical decisions.",
+        "header": "Owner: @{owner} | Docs: {docs} | Alerts land in #alert-systems."
+      }
+    ],
+    "sales": [
+      {
+        "suffix": "general",
+        "display_suffix": "General",
+        "type": "O",
+        "purpose": "Sales home channel across every vertical.",
+        "header": "Owner: @{owner} | Docs: {docs} | Cross-vertical sales. Vertical-specific deals go in #{vertical}-gtm."
+      },
+      {
+        "suffix": "gtm",
+        "display_suffix": "GTM",
+        "type": "O",
+        "purpose": "Pipeline, sponsorship packaging and pricing shared across verticals.",
+        "header": "Owner: @{owner} | Docs: {docs} | Pipeline and packaging. Commercial terms stay in #finance."
+      }
+    ],
+    "community": [
+      {
+        "suffix": "general",
+        "display_suffix": "General",
+        "type": "O",
+        "purpose": "Community home channel: athletes, clubs, ambassadors, content.",
+        "header": "Owner: @{owner} | Docs: {docs} | Community home channel."
+      },
+      {
+        "suffix": "content",
+        "display_suffix": "Content",
+        "type": "O",
+        "purpose": "Social, newsletters and athlete stories for every vertical.",
+        "header": "Owner: @{owner} | Docs: {docs} | Content calendar and approvals."
+      }
+    ]
+  },
+  "owners": {
+    "$comment": "Mattermost usernames. Fill in as champions are named; re-run bootstrap.py to update headers. TBD renders as 'Owner: @TBD'.",
+    "exec_sponsor": "TBD",
+    "programme_owner": "TBD",
+    "platform_admin": "TBD",
+    "hyrox": "TBD",
+    "ironman": "TBD",
+    "passport": "TBD",
+    "noparking": "TBD",
+    "festival": "TBD",
+    "tech": "TBD",
+    "sales": "TBD",
+    "community": "TBD"
+  },
+  "docs": {
+    "$comment": "Notion URLs, filled once the workspace exists. Empty renders as 'Docs: (coming)'."
+  }
+}

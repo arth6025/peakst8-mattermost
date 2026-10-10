@@ -1,0 +1,22 @@
+# Local rehearsal on a laptop. Used by local.sh — not for production.
+# Mattermost on http://localhost:8065, every outgoing email caught by Mailpit on http://localhost:8025.
+services:
+  caddy:
+    profiles: ["prod"]          # no HTTPS proxy locally
+  mattermost:
+    ports:
+      - "8065:8065"
+    environment:
+      MM_SERVICESETTINGS_SITEURL: http://localhost:8065
+      MM_EMAILSETTINGS_SMTPSERVER: mailpit
+      MM_EMAILSETTINGS_SMTPPORT: "1025"
+      MM_EMAILSETTINGS_CONNECTIONSECURITY: ""
+      MM_EMAILSETTINGS_ENABLESMTPAUTH: "false"
+      MM_EMAILSETTINGS_FEEDBACKEMAIL: mattermost@peakst8.club
+      MM_EMAILSETTINGS_SENDEMAILNOTIFICATIONS: "true"
+      MM_EMAILSETTINGS_REQUIREEMAILVERIFICATION: "true"
+  mailpit:
+    image: axllent/mailpit:latest
+    restart: unless-stopped
+    ports:
+      - "8025:8025"

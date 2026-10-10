@@ -1,0 +1,81 @@
+# Peakst8 Workology — Mattermost, self-hosted.
+# Mattermost (Enterprise binary, runs as free Team Edition until a Professional licence is uploaded)
+# + Postgres 16 + Caddy (automatic HTTPS from Let's Encrypt).
+# Settings are read from .env — copy .env.example, or let install.sh generate it.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mmuser
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set in .env}
+      POSTGRES_DB: mattermost
+    volumes:
+      - ${DATA_DIR:-./volumes}/db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mmuser -d mattermost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 200
+
+  mattermost:
+    image: mattermost/mattermost-enterprise-edition:${MM_VERSION:-11.11.1}
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      TZ: ${TZ:-Asia/Kolkata}
+      MM_SQLSETTINGS_DRIVERNAME: postgres
+      MM_SQLSETTINGS_DATASOURCE: postgres://mmuser:${POSTGRES_PASSWORD}@postgres:5432/mattermost?sslmode=disable&connect_timeout=10
+      MM_SERVICESETTINGS_SITEURL: https://${DOMAIN:?set in .env}
+      MM_BLEVESETTINGS_INDEXDIR: /mattermost/bleve-indexes
+      # Lets the bootstrap script authenticate with a personal access token.
+      MM_SERVICESETTINGS_ENABLEUSERACCESSTOKENS: "true"
+      # mmctl --local inside the container (setup.sh uses it to create the admin). Socket stays in the container.
+      MM_SERVICESETTINGS_ENABLELOCALMODE: "true"
+      # Outgoing mail: password resets, invites, missed-message digests.
+      MM_EMAILSETTINGS_SMTPSERVER: ${SMTP_HOST:-}
+      MM_EMAILSETTINGS_SMTPPORT: ${SMTP_PORT:-587}
+      MM_EMAILSETTINGS_SMTPUSERNAME: ${SMTP_USER:-}
+      MM_EMAILSETTINGS_SMTPPASSWORD: ${SMTP_PASSWORD:-}
+      MM_EMAILSETTINGS_CONNECTIONSECURITY: ${SMTP_SECURITY:-STARTTLS}
+      MM_EMAILSETTINGS_ENABLESMTPAUTH: ${SMTP_AUTH:-true}
+      MM_EMAILSETTINGS_FEEDBACKEMAIL: ${MAIL_FROM:-}
+      MM_EMAILSETTINGS_REPLYTOADDRESS: ${MAIL_FROM:-}
+      MM_EMAILSETTINGS_SENDEMAILNOTIFICATIONS: ${SMTP_ENABLED:-false}
+      MM_EMAILSETTINGS_REQUIREEMAILVERIFICATION: ${SMTP_ENABLED:-false}
+    volumes:
+      - ${DATA_DIR:-./volumes}/app/mattermost/config:/mattermost/config
+      - ${DATA_DIR:-./volumes}/app/mattermost/data:/mattermost/data
+      - ${DATA_DIR:-./volumes}/app/mattermost/logs:/mattermost/logs
+      - ${DATA_DIR:-./volumes}/app/mattermost/plugins:/mattermost/plugins
+      - ${DATA_DIR:-./volumes}/app/mattermost/client/plugins:/mattermost/client/plugins
+      - ${DATA_DIR:-./volumes}/app/mattermost/bleve-indexes:/mattermost/bleve-indexes
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 400
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8065/api/v4/system/ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on: [mattermost]
+    environment:
+      DOMAIN: ${DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL:-}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ${DATA_DIR:-./volumes}/caddy/data:/data
+      - ${DATA_DIR:-./volumes}/caddy/config:/config

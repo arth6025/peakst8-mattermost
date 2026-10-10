@@ -1,0 +1,12 @@
+{
+	email {$ACME_EMAIL}
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+	# Websockets are proxied automatically.
+	reverse_proxy mattermost:8065 {
+		header_up X-Forwarded-Proto https
+	}
+	header Strict-Transport-Security "max-age=31536000"
+}

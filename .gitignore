@@ -1,0 +1,10 @@
+# secrets and per-server state — never commit
+deploy/.env
+deploy/admin-credentials*.txt
+build/state.json
+# data
+deploy/volumes/
+deploy/volumes-local/
+deploy/backups/
+*.tar.gz
+.DS_Store
