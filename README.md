@@ -11,6 +11,23 @@ internal conversation, part of **Peakst8 Workology** (Mattermost to talk, Notion
 **One command** (`deploy/install.sh`) installs Docker, Postgres, Mattermost 11.11.1 and HTTPS, then creates the
 admin, the `peakst8` team, all 33 channels, the @peakst8.club sign-up rule and the Bluedot webhook.
 
+## Get the deployment package
+
+This repo **is** the package. Get it either way, then follow the checklist below.
+
+| Option | How |
+|---|---|
+| **Download** (one file) | [**peakst8-mattermost.tar.gz**](https://github.com/arth6025/peakst8-mattermost/releases/latest/download/peakst8-mattermost.tar.gz) — always the latest release. All versions: [Releases](https://github.com/arth6025/peakst8-mattermost/releases). |
+| **Clone** (easier to update later with `git pull`) | `git clone https://github.com/arth6025/peakst8-mattermost.git` |
+
+Straight onto the server, without a laptop in between:
+
+```bash
+sudo mkdir -p /opt/peakst8-mattermost
+curl -fsSL https://github.com/arth6025/peakst8-mattermost/releases/latest/download/peakst8-mattermost.tar.gz \
+  | sudo tar -xz -C /opt/peakst8-mattermost --strip-components=1
+```
+
 ---
 
 ## Developer checklist
@@ -30,7 +47,7 @@ Tick these off in order. Each phase needs the previous one done.
 ### Phase 2 — Install (about 10 minutes)
 
 ```bash
-sudo git clone https://github.com/arth6025/peakst8-mattermost.git /opt/peakst8-mattermost
+sudo git clone https://github.com/arth6025/peakst8-mattermost.git /opt/peakst8-mattermost   # or the download above
 cd /opt/peakst8-mattermost/deploy
 sudo cp .env.example .env
 sudo nano .env
