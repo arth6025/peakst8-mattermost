@@ -26,8 +26,6 @@ Tick these off in order. Each phase needs the previous one done.
       port, user, password, sender address. **Required:** @peakst8.club self sign-up only opens when email
       verification works, otherwise anyone could register a made-up address.
 - [ ] **Admin mailbox** — a shared address such as `it@peakst8.club`. It becomes the System Admin.
-- [ ] **Repo access** — this repo is private. Ask Arvind to add you as a collaborator, or add the server's
-      deploy key under *Settings → Deploy keys* (read-only).
 
 ### Phase 2 — Install (about 10 minutes)
 
