@@ -78,6 +78,8 @@ sudo ./install.sh
 
 ### Phase 4 — Onboarding the team
 
+- [ ] Optional, before sending invites: swap in the branded invite email — [`deploy/email-templates/`](deploy/email-templates/README.md) — and set Site Name to `Peakst8`.
+
 People join in waves ahead of the WhatsApp cutover on **14 November 2026**. Arvind and the channel owners decide
 who is in each wave; tech keeps sign-in smooth. Everyone follows [`ONBOARDING.md`](ONBOARDING.md).
 
@@ -122,6 +124,7 @@ deploy/
   local.sh                rehearse the whole setup on a laptop (needs Docker)
   docker-compose.local.yml  local overrides: localhost:8065 + Mailpit on localhost:8025
   RUNBOOK.md              detail: SMTP, push, licence upgrade, day-2 operations
+  email-templates/        branded Peakst8 invite email (one-off swap, see its README)
 ```
 
 ### Rehearse on a laptop (optional)
