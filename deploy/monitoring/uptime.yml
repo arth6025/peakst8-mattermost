@@ -1,0 +1,64 @@
+# Uptime check for mattermost.peakst8.club, run from GitHub so it still works when the server is down.
+# Down  → opens a GitHub issue labelled "outage" (GitHub emails repo watchers) and tries #alert-systems.
+# Up    → closes the open outage issue and posts the recovery to #alert-systems.
+# Daily → 09:00 IST heartbeat in #alert-systems, so silence itself is a signal.
+# Needs repo secret MM_STATUS_WEBHOOK = the #alert-systems incoming webhook URL.
+name: uptime
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"     # every 5 min (GitHub may delay a few minutes)
+    - cron: "30 3 * * *"      # 09:00 IST heartbeat
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+concurrency: uptime
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      URL: https://mattermost.peakst8.club/api/v4/system/ping
+      HOOK: ${{ secrets.MM_STATUS_WEBHOOK }}
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Ping (3 tries, 20 s apart)
+        id: ping
+        run: |
+          for i in 1 2 3; do
+            code=$(curl -s -o /dev/null -m 15 -w '%{http_code}' "$URL" || echo 000)
+            [ "$code" = 200 ] && break
+            sleep 20
+          done
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          echo "HTTP $code"
+
+      - name: Act on result
+        run: |
+          post() { [ -n "$HOOK" ] && curl -s -m 15 -X POST -H 'Content-Type: application/json' -d "$(jq -n --arg t "$1" '{text:$t}')" "$HOOK" >/dev/null || true; }
+          now=$(TZ=Asia/Kolkata date '+%d %b %H:%M IST')
+          open=$(gh issue list -R "$REPO" -l outage -s open --json number,createdAt -q '.[0]')
+          code='${{ steps.ping.outputs.code }}'
+
+          if [ "$code" != 200 ]; then
+            if [ -z "$open" ]; then
+              gh label create outage -R "$REPO" -c E91F00 -d "Mattermost is down" 2>/dev/null || true
+              gh issue create -R "$REPO" -l outage -t "Mattermost down since $now (HTTP $code)" \
+                -b "Uptime check failed 3 times: \`$URL\` returned HTTP $code. Closes automatically on recovery."
+              post ":red_circle: **Mattermost is DOWN** since $now (HTTP $code)."
+            fi
+            exit 1   # red run in the Actions tab
+          fi
+
+          if [ -n "$open" ]; then
+            num=$(echo "$open" | jq -r .number); since=$(echo "$open" | jq -r .createdAt)
+            mins=$(( ( $(date +%s) - $(date -d "$since" +%s) ) / 60 ))
+            gh issue close "$num" -R "$REPO" -c "Recovered at $now after ~${mins} min."
+            post ":large_green_circle: **Mattermost is back up** at $now — down ~${mins} min."
+          elif [ "${{ github.event.schedule }}" = "30 3 * * *" ]; then
+            post ":white_check_mark: Daily check: Mattermost up, $now."
+          fi
