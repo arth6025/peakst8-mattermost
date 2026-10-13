@@ -18,7 +18,7 @@ _Last updated: 13 Oct 2026_
 
 | Channel | Owner | Who joins |
 |---|---|---|
-| [#team-platform](https://mattermost.peakst8.club/peakst8/channels/team-platform) | @arth | Platform team: product, eng, releases, infra. Anyone with a request for tech. |
+| [#team-platform](https://mattermost.peakst8.club/peakst8/channels/team-platform) | @arth | PMs, designers and engineers in one view. Daily update thread every weekday at 10:00 IST. |
 
 ## Projects and events — join if you're working on it
 
