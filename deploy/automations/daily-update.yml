@@ -1,0 +1,33 @@
+# Weekday daily-update prompt in #team-platform, 10:00 IST (04:30 UTC), posted from GitHub Actions.
+# Needs repo secret  MM_TEAM_PLATFORM_WEBHOOK = the "Platform daily update" incoming webhook URL.
+# Optional repo variable PLATFORM_NOTION_URL = Notion board link (the line is left out while it's empty).
+name: daily-update
+
+on:
+  schedule:
+    - cron: "30 4 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      HOOK: ${{ secrets.MM_TEAM_PLATFORM_WEBHOOK }}
+      NOTION: ${{ vars.PLATFORM_NOTION_URL }}
+    steps:
+      - name: Post the daily update prompt
+        run: |
+          [ -n "$HOOK" ] || { echo "MM_TEAM_PLATFORM_WEBHOOK secret is not set"; exit 1; }
+          day=$(TZ=Asia/Kolkata date '+%a %d %b')
+          text="#### :spiral_calendar_pad: Daily Updates · $day
+          @channel Please reply **in this thread** with your daily update:
+          - What did you get done since your last update?
+          - What are the next steps?
+          - Any blockers?"
+          if [ -n "$NOTION" ]; then text="$text
+
+          Please update the [Notion board]($NOTION) as well!"; fi
+          text=$(printf '%s' "$text" | sed 's/^          //')
+          curl -fsS -m 15 -X POST -H 'Content-Type: application/json' \
+            -d "$(jq -n --arg t "$text" '{text:$t}')" "$HOOK"
