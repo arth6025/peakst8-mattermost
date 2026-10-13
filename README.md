@@ -8,6 +8,7 @@ internal conversation, part of **Peakst8 Workology** (Mattermost to talk, Notion
 | The developer deploying the server | This README, top to bottom. Detail in [`deploy/RUNBOOK.md`](deploy/RUNBOOK.md). |
 | Anyone at Peakst8 joining Mattermost | [`ONBOARDING.md`](ONBOARDING.md) |
 | Checking where the deployment stands | [`STATUS.md`](STATUS.md) |
+| Finding or creating a channel | [`CHANNELS.md`](CHANNELS.md) — the live channel directory |
 
 **One command** (`deploy/install.sh`) installs Docker, Postgres, Mattermost 11.11.1 and HTTPS, then creates the
 admin, the `peakst8` team, all 33 channels, the @peakst8.club sign-up rule and the Bluedot webhook.

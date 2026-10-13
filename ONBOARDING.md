@@ -13,38 +13,33 @@ instead of eleven WhatsApp groups. This checklist gets you in and working in abo
 - [ ] Open **https://mattermost.peakst8.club** on your laptop and click **Create account**.
 - [ ] Sign up with your **@peakst8.club** email. Use your real name; username like `firstname.lastname`.
 - [ ] Open the verification email and click the link (check spam if it isn't there).
-- [ ] You land in the **Peakst8** team, already in #company-announcements, #decisions, #weekly-digest,
-      #ops-escalations and #random.
-- [ ] Join your own channels: **+** next to *Channels* → **Browse channels** → join your vertical's and
-      horizontal's channels (e.g. #hyrox-general, #hyrox-ops, #tech-eng).
+- [ ] You land in **Town Square**. **Say hi** — your name, your team, what you work on.
+- [ ] Read the **pinned post** in Town Square (pin icon, top right).
+- [ ] Join your channels from **[CHANNELS.md](CHANNELS.md)** — company-wide ones for everyone, then your
+      team's and the projects you're on. Or **+** next to *Channels* → **Browse channels**.
 - [ ] Install the phone app — **Mattermost** on the App Store or Google Play. Server:
       `https://mattermost.peakst8.club`. Sign in.
 - [ ] On the phone: **Settings → Notifications → Mobile push → For mentions and direct messages**.
-- [ ] Add a profile photo and put your vertical or horizontal in **Position**.
-- [ ] Say hello in your team's `-general` channel. That's your first post.
+- [ ] Add a profile photo and put your team in **Position**.
 
 ---
 
 ## 🗺️ Where to post what
 
-Every channel starts with who it belongs to. Not sure? Post in your team's `-general` and someone will point you on.
+**The live list of channels, owners and who should join is [CHANNELS.md](CHANNELS.md).** New channels are
+added there the week they're created — check it when you're looking for something.
 
 | If it's about… | Post in |
 |---|---|
-| A vertical, day to day | `#hyrox-general` · `#ironman-general` · `#passport-general` · `#noparking-general` · `#festival-general` |
-| Delivery, on-ground ops, the daily standup | `#<vertical>-ops` |
-| Sales, sponsors, marketing for one vertical | `#<vertical>-gtm` |
-| Tech requests, product, engineering | `#tech-general` · `#tech-product` · `#tech-eng` |
-| Sales across verticals | `#sales-general` · `#sales-gtm` |
-| Athletes, clubs, content | `#community-general` · `#community-content` |
-| One initiative with an end date | `#proj-<area>-<name>`, e.g. `#proj-hyrox-season-launch` |
+| Your team's day-to-day | `#team-<name>`, e.g. `#team-platform` |
+| A project with an end date | `#project-<name>-<year>`, e.g. `#project-peakst8-festival-2027` |
+| A race or event | `#<event>-<city>-<year>`, e.g. `#ironman70-3-goa-2026` |
 | Something decided | `#decisions` — one post, same day, with the link |
-| Blocking an athlete, event or client **today** | `#ops-escalations` |
-| Brand and customer call summaries | `#calls` — posted automatically by Bluedot |
-| News for everyone | `#company-announcements` — leads post, everyone replies in a thread |
-| Everything else | `#random` |
+| News for everyone | `#announcements` — leads post, everyone replies in a thread |
+| Not sure where | `#town-square`, and someone will point you on |
+| Everything else | `#off-topic` |
 
-`#finance` and `#people` are private; their owners add members.
+Need a channel that doesn't exist? See *Creating a channel* in [CHANNELS.md](CHANNELS.md).
 
 ---
 
@@ -71,7 +66,7 @@ Each vertical and horizontal has one owner, who is also its champion. You get yo
 
 - [ ] Sign in and install the phone app.
 - [ ] Put your name in each of your channel headers: `Owner: @you | Docs: <Notion link> | <one-line rule>`.
-- [ ] Pin one post in your `-general`: what goes where, and when the daily standup is due.
+- [ ] Pin one post in your channel: what goes where, and when the daily standup is due. Add your channel to CHANNELS.md.
 - [ ] Tell Arvind who on your team doesn't have a @peakst8.club email yet.
 
 **The week your team joins**
@@ -108,10 +103,10 @@ so that every new arrival finds a channel people already use.
 | Question | Answer |
 |---|---|
 | I don't have a @peakst8.club email | Ask Arvind. Freelancers and partners join later as guests, in their own `#ext-` channel only. |
-| The verification email never came | Check spam, then ask in #tech-general (from a colleague's screen) or message Zadence. |
+| The verification email never came | Check spam, then ask in #team-platform (from a colleague's screen) or message Zadence. |
 | Forgot my password | **Forgot password** on the sign-in page; the reset goes to your @peakst8.club inbox. |
 | Too many notifications | Mute a channel from its name menu; set mobile push to mentions only. |
 | Can I still use WhatsApp? | For urgent pings on the ground, yes — one group survives cutover. Everything else moves here. |
 | Where do partners go? | Not yet. Once guest access is on, each partner gets one private `#ext-` channel and sees nothing else. |
-| Something is broken | Post in #tech-general. Zadence runs the server. |
+| Something is broken | Post in #team-platform. Zadence runs the server. |
 | Who owns this | Arvind |
