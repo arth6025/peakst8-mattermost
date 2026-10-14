@@ -3,7 +3,7 @@
 Every live channel on **https://mattermost.peakst8.club**, who owns it, and who should join.
 Join any public channel: **+ → Browse channels**, or click the link.
 
-_Last updated: 13 Oct 2026_
+_Last updated: 14 Oct 2026_
 
 ## Company-wide — everyone joins
 
@@ -26,6 +26,7 @@ _Last updated: 13 Oct 2026_
 |---|---|---|
 | [#project-peakst8-festival-2027](https://mattermost.peakst8.club/peakst8/channels/project-peakst8-festival-2027) | @shreyans (SJ) | Planning and delivery of Peakst8 Festival 2027 |
 | [#ironman70-3-goa-2026](https://mattermost.peakst8.club/peakst8/channels/ironman70-3-goa-2026) | Neil (Yoska) | Ironman 70.3 Goa 2026: ops, athletes, coaching, on-ground |
+| [#project-pumap3](https://mattermost.peakst8.club/peakst8/channels/project-pumap3) | @shravan + Krishna Kohli (Yoska) | PUMA Project 3: tech, training and app in one place |
 
 ## Systems — read-only
 
