@@ -70,7 +70,7 @@ From the kit's FONTS page:
 |---|---|---|---|
 | **Boldonse** Regular | PRIMARY, for titles | ALL CAPS | WE'RE BACK FOR ROUND 2. / FIND YOUR FLOW. / 5 A SIDE FOOTBALL. Condensed, circular O. Caps are taller than the em, so leading ≈ 1.3 (the builder handles it). |
 | **Anton** Regular | ALTERNATE title font | ALL CAPS | Speaker names (ANDREW / HUBERMAN), badge words (AAA, ATHLETE), partner names. |
-| **Sora** SemiBold | Long-form content | CAPS for short lines; **sentence case for paragraphs** | "DISCOVER NEW WAYS TO MOVE.", "PERFORMANCE PARTNER", "14 JANUARY 2027", speaker blurbs, body slides. |
+| **Sora** SemiBold | Long-form content | CAPS for short lines; **sentence case for paragraphs** | "DISCOVER NEW WAYS TO MOVE.", "PERFORMANCE PARTNER", "30 JANUARY 2027", speaker blurbs, body slides. |
 | **Micro 5 Charted** | Fun typography / type accents | Any | "MORE TO KNOW." chip, "1/6 >" counter, form labels. Dot-matrix grid look. Small doses. |
 
 Hierarchy: one Boldonse (or Anton) title → one Sora line → at most one Micro accent. Never all four on one frame.
@@ -81,7 +81,7 @@ Hierarchy: one Boldonse (or Anton) title → one Sora line → at most one Micro
 Lockup is the stacked "peakst8 / FESTIVAL" wordmark with the 8-glyph.
 
 - Corner position on posts: top-right (headline posts) or top-left (partner, carousel), ~23% of canvas width.
-- Optional date line under it: "14 JANUARY 2027" in Sora SemiBold, wide tracking (speaker cards, billboard).
+- Optional date line under it: "30 JANUARY 2027" in Sora SemiBold, wide tracking (speaker cards, billboard).
 - Hero use: centred, ~65% width, with a Sora tagline under it (cover, general announcement).
 - Clear space: at least the height of the "8" glyph on all sides.
 - Never recolour outside GRILL / BONE. Never stretch, outline, or put on a busy part of a photo without a scrim.
@@ -120,7 +120,7 @@ Each form can be adapted, cropped, blurred, layered or combined with imagery:
 ## Recurring copy patterns from the kit's applied examples
 
 - Brand line: **FIND YOUR FLOW.**
-- Date lockup: **14 JANUARY 2027** (Micro 5 Charted or Sora, small, near logo).
+- Date lockup: **30 JANUARY 2027** (the kit's mock-ups show 14 January, a placeholder) (Micro 5 Charted or Sora, small, near logo).
 - Return message: **WE'RE BACK FOR ROUND 2.**
 - Hook / CTA: **MORE TO KNOW.**
 - Partner card: partner name big + role line ("PERFORMANCE PARTNER").

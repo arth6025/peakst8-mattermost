@@ -22,7 +22,7 @@ slides; keys inside a slide override them. Worked briefs for every layout are in
 | `bg_pos` | CSS object-position, e.g. `"70% center"` (useful when a 4:5 bg is cropped into a story) | `center` |
 | `logo` | `tl` `tr` `bl` `br` `center` `none` | per layout |
 | `logo_colour` | `white` `bone` `black` | `white` |
-| `date` | `true` (= "14 JANUARY 2027") or any string, shown under the logo | off |
+| `date` | `true` (= "30 JANUARY 2027") or any string, shown under the logo | off |
 | `elements` | list of extra glass forms: `{"form":"meet","x":70,"y":20,"size":60,"rotate":0,"opacity":1,"blur":0,"blend":"normal"}`. x/y are the centre in % of width/height; size is % of width. | none |
 | `dust` | 0–0.4, scanned dust overlay | 0 (0.1–0.12 on photo layouts) |
 | `grain` | 0–0.15, fine noise | 0.06 |
@@ -49,6 +49,7 @@ Boldonse headline on a glass bg. Auto-sized to fill the box.
 | `top`, `bottom` | fraction of height kept clear above/below the box |
 | `size` | max font size in px at 1080 (default 260; the fit shrinks it as needed) |
 | `font` | `"anton"` to use the alternate title face |
+| `nowrap` | `true`: break lines only at `\n`, shrink instead of wrapping. Use for dates and numbers ("30 JAN\n2027.") |
 
 Match bg to the free space (see the bg table in brand.md): bg1 → left-aligned, bg2 → `left: 300`, bg3/bg4 → centred.
 

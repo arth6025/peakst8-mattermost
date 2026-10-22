@@ -26,7 +26,7 @@ examples/briefs/ + examples/renders/    ← working briefs and what they produce
 ## Workflow
 
 1. **Read `references/brand.md`.** For a new kind of post, also look at the closest file in `assets/examples/` (text_ann, text_ann2, experience1/2, partner_ann, gen_ann, cover, kit-speakers).
-2. **Pin down the brief.** You need: format(s), the copy, and the purpose (announcement, partner, speaker, format/experience, explainer, countdown). If the copy is long, split it: headline ≤ 6 words on the image; the rest goes in the caption. Don't invent facts (names, dates, prices, venues). Use only what the person gave you. The festival date in the kit is **14 January 2027**.
+2. **Pin down the brief.** You need: format(s), the copy, and the purpose (announcement, partner, speaker, format/experience, explainer, countdown). If the copy is long, split it: headline ≤ 6 words on the image; the rest goes in the caption. Don't invent facts (names, dates, prices, venues). Use only what the person gave you. The festival date is **30 January 2027**. (The designer's mock-ups in `assets/examples/` say 14 January: that was a placeholder, never use it.)
 3. **Pick a layout** (`references/layouts.md`):
    - Short punchy line → `headline` on a bg whose free space suits the line length.
    - A sport / format / experience → `photo` with an img-bank shot (or their photo).

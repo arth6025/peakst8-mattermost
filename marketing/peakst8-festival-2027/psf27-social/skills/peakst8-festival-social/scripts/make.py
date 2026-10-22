@@ -140,7 +140,7 @@ def logo_html(s, W, H, default="tr"):
     colour = "black" if s.get("light") else s.get("logo_colour", "white")
     date = s.get("date")
     if date is True:
-        date = "14 JANUARY 2027"
+        date = "30 JANUARY 2027"
     d = f'<div class="date">{esc(date)}</div>' if date else ""
     style = ""
     if pos == "center":
@@ -190,6 +190,8 @@ def L_headline(s, base, W, H, u, m):
     """Big Boldonse headline on a glass background. text_ann / text_ann2 / experience*."""
     align = s.get("align", "left")
     font = "anton" if s.get("font") == "anton" else ""
+    # nowrap: break lines only where the brief puts \n, shrinking the type instead of wrapping (dates, numbers)
+    nowrap = ' style="white-space:nowrap"' if s.get("nowrap") else ""
     top = s.get("top", 0.25 if H > W * 1.4 else 0.12)  # clear the logo; stories keep top 250px free
     bottom = s.get("bottom", 0.24 if H > W * 1.4 else 0.16)
     left = s.get("left", m / u)
@@ -202,7 +204,7 @@ def L_headline(s, base, W, H, u, m):
     ta = "center" if align == "center" else "left"
     return f"""
 <div class="box" style="{x};top:{top * H}px;width:{width * u}px;height:{H * (1 - top - bottom)}px;justify-content:{just};text-align:{ta};align-items:{'center' if ta == 'center' else 'flex-start'}">
-  <div class="hd fit {font}" data-max="{max_px}" data-min="{60 * u}">{rich(s.get("headline", ""))}</div>
+  <div class="hd fit {font}"{nowrap} data-max="{max_px}" data-min="{60 * u}">{rich(s.get("headline", ""))}</div>
   {sub}{chip}
 </div>"""
 

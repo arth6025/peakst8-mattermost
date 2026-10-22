@@ -43,7 +43,7 @@ Then restart Claude Code.
 
 - **Free:** every PSF post, all copy and planning, and brand checks.
 - **Costs credits:** images and videos from the Marketing Kit. Claude always shows the price and waits for your yes. The limit is 50 credits a day per person; ask Arvind for more.
-- **Claude never invents facts.** Give it the real names, dates, venues and prices. The festival date in the kit is 14 January 2027.
+- **Claude never invents facts.** Give it the real names, dates, venues and prices. The festival date is 30 January 2027.
 - **Partner and speaker posts** need the partner's logo or a portrait photo from you.
 - **Exact text in videos:** AI video can warp letters. If the headline must stay perfect, ask for "the code-motion route".
 - **Want a video in the style of one you saw online?** See [Reverse engineer any video](../reverse-engineer/README.md).

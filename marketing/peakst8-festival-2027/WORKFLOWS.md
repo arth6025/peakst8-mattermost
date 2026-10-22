@@ -31,14 +31,14 @@ Small line: [More to know.]
 PSF carousel, [5] slides, from this copy:
 [paste copy]
 Cover hook: [8 WAYS TO MOVE TOGETHER.]
-Last slide: [14 Jan 2027. Tickets drop soon.]
+Last slide: [30 Jan 2027. Tickets drop soon.]
 ```
 
 ### 3. Story
 ```
 PSF story for [Midnight Run Rave].
 Headline: [MIDNIGHT RUN RAVE.]
-Details: [14 January 2027 · Bengaluru]
+Details: [30 January 2027 · Bengaluru]
 Sticker text: [SWIPE UP]
 ```
 
