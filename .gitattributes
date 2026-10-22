@@ -1,0 +1,3 @@
+# Keep the server deployment tarball lean (git archive): marketing kits are team tools, not server files
+marketing/ export-ignore
+.claude-plugin/ export-ignore

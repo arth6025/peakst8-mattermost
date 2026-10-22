@@ -10,6 +10,7 @@ internal conversation, part of **Peakst8 Workology** (Mattermost to talk, Notion
 | Checking where the deployment stands | [`STATUS.md`](STATUS.md) |
 | Finding or creating a channel | [`CHANNELS.md`](CHANNELS.md) — the live channel directory |
 | Moving a Google Chat space here | [`skills/gchat-to-mattermost`](skills/gchat-to-mattermost/README.md): setup steps + Claude skill download |
+| On the marketing team | [`marketing/`](marketing/README.md): peakst8 Festival 2027 workflows + skill files, and how to reverse engineer any video |
 
 **One command** (`deploy/install.sh`) installs Docker, Postgres, Mattermost 11.11.1 and HTTPS, then creates the
 admin, the `peakst8` team, all 33 channels, the @peakst8.club sign-up rule and the Bluedot webhook.

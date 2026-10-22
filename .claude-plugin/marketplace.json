@@ -1,0 +1,8 @@
+{
+  "name": "peakst8",
+  "owner": { "name": "peakst8" },
+  "plugins": [
+    { "name": "psf27-social", "source": "./marketing/peakst8-festival-2027/psf27-social", "description": "peakst8 Festival 2027 brand kit: on-brand statics, carousels, stories, covers." },
+    { "name": "marketing-kit", "source": "./marketing/peakst8-festival-2027/marketing-kit", "description": "79 marketing and creative skills: copy, ads, image-to-video, reels, captions, brand checks." }
+  ]
+}
